@@ -1,17 +1,19 @@
 # 🌬️ Smart Ventilation System Simulation
 
-Welcome to the **Smart Corridor Ventilation & Air Quality Monitoring System**! This project is a comprehensive exploration of IoT, low-level architecture, and 3D visualization, designed to simulate an automated system that monitors air safety and manages ventilation in a smart building environment.
+The **Smart Corridor Ventilation & Air Quality Monitoring System** is a comprehensive exploration of IoT, low-level computer architecture, and 3D visualization — an automated system that monitors air safety and manages ventilation in a smart building. Built as a **Computer Architecture course project** (NUST SEECS).
 
-This repository contains three distinct components that model different layers of the system:
-1.  **Hardware Layer (Wokvi)**: ESP32-based sensor node using C++.
-2.  **Architecture Layer (Ripes)**: RISC-V assembly implementation.
-3.  **Visualization Layer (React/Three.js)**: A high-fidelity 3D web simulation.
+This repository contains three distinct layers that model the full stack of the system, integrated over a shared **MQTT** message bus (HiveMQ public broker):
+1.  **Hardware Layer (Wokwi)**: ESP32-based sensor node in C++ that reads sensors and publishes telemetry over MQTT.
+2.  **Architecture Layer (Ripes)**: RISC-V assembly implementing the safety logic with memory-mapped I/O.
+3.  **Visualization Layer (React/Three.js)**: A high-fidelity 3D "digital twin" that subscribes to the same MQTT topics and reacts in real time.
+
+The three layers talk over MQTT topics under `smart-corridor/*` — the Wokwi node publishes sensor readings, the logic layer drives the safe/danger decision, and the 3D twin visualizes the resulting state and fan response live.
 
 ---
 
 ## 📂 Project Structure
 
-- **`wokvi/`**: Contains the ESP32 firmware code (`sketch.ino`) for the Wokvi online simulator.
+- **`wokvi/`**: Contains the ESP32 firmware code (`sketch.ino`) for the Wokwi online simulator.
 - **`ripes/`**: Contains the RISC-V assembly code (`ripes.s`) for the Ripes processor simulator.
 - **`Simulation-room/`**: A modern React + Three.js web application providing an immersive 3D visualization of the environment.
 
@@ -19,7 +21,7 @@ This repository contains three distinct components that model different layers o
 
 ## 🛠️ Components Overview
 
-### 1. Wokvi Simulation (IoT Layer)
+### 1. Wokwi Simulation (IoT Layer)
 This module simulates the physical edge device responsible for gathering sensor data and communicating with the cloud.
 
 - **Platform**: ESP32
@@ -31,7 +33,7 @@ This module simulates the physical edge device responsible for gathering sensor 
 
 **How to Run:**
 1.  Open the `wokvi/sketch.ino` file.
-2.  Copy the code into a project on [Wokvi.com](https://wokvi.com).
+2.  Copy the code into a project on [Wokwi.com](https://wokwi.com).
 3.  Add an ESP32, Potentiometers, LEDs, and a Switch to the diagram.
 4.  Start the simulation to see MQTT messages interacting with the broker.
 
@@ -67,7 +69,7 @@ A "Digital Twin" style 3D visualization that provides an intuitive user interfac
 **How to Run:**
 1.  Navigate to the directory:
     ```bash
-    cd Simulation-room
+    cd simulation-room
     ```
 2.  Install dependencies:
     ```bash
@@ -90,6 +92,13 @@ All three components share the same core safety logic:
     - Triggered if **CO2** > 1000 ppm.
 
 ---
+
+## 👥 Authors
+Built collaboratively for the Computer Architecture course at NUST SEECS by:
+- **[Muhammad Taha](https://github.com/MuhammadTaha305)**
+- **[Faizan Anwar](https://github.com/m-faizananwar)**
+
+Original repository: [m-faizananwar/Ventilation-System-Simulation](https://github.com/m-faizananwar/Ventilation-System-Simulation).
 
 ## 📝 License
 This project is open-source and intended for educational purposes.
