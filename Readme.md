@@ -1,5 +1,7 @@
 # 🌬️ Smart Ventilation System Simulation
 
+> 📚 **Course:** Computer Architecture — Fall 2025, NUST SEECS
+
 The **Smart Corridor Ventilation & Air Quality Monitoring System** is a comprehensive exploration of IoT, low-level computer architecture, and 3D visualization — an automated system that monitors air safety and manages ventilation in a smart building. Built as a **Computer Architecture course project** (NUST SEECS).
 
 This repository contains three distinct layers that model the full stack of the system, integrated over a shared **MQTT** message bus (HiveMQ public broker):
